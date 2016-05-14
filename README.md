@@ -6,7 +6,7 @@ This project enables users to create accounts (and login) using their LinkedIn p
 2. Create Database with name as 'LinkRygbee' in orientdb.
 3. Import LinkRygbee.gz file in 'LinkRygbee' database.
 4. Create Application at (https://www.linkedin.com/developer/apps) and obtain consumer_key(Client ID) and consumer_secret(Client Secret).
-5. After creating application 
+5. After creating application check all default application permission and set Authorized Redirect URLs as http://localhost:6543/login/lin
 
 ##Configuration:
 1. Edit socialconfig.py file inside project.Change consumer_key and consumer_secret obtained from linkedIn.
