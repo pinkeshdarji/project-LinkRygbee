@@ -12,7 +12,19 @@ This project enables users to create accounts (and login) using their LinkedIn p
 1. Edit socialconfig.py file inside project.Change consumer_key and consumer_secret obtained from linkedIn.
 
 
-Before running make sure you have started 
+##How to run:
+Make sure you have started 
 1. Orientdb running at localhost:2480
-2. elasticsearch running at localhost:9000
+2. Elasticsearch running at localhost:9000
+3. Run Linkrygbee project which you have pasted earlier.
+
+##Dependency:
+For running this project we need 3 libraries to be installed.
+1. Authomatic:- pip install authomatic (http://peterhudec.github.io/authomatic/)(https://github.com/peterhudec/authomatic/tree/master/examples/gae/showcase)
+2. pyorient:- pip install pyorient
+(https://github.com/orientechnologies/pyorient)
+3. pyelasticsearch:- pip install pyelasticsearch
+(http://pyelasticsearch.readthedocs.io/en/latest/)
+
+
 
