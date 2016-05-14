@@ -13,10 +13,9 @@ This project enables users to create accounts (and login) using their LinkedIn p
 
 
 ##How to run:
-Make sure you have started 
-1. Orientdb running at localhost:2480
-2. Elasticsearch running at localhost:9000
-3. Run Linkrygbee project which you have pasted earlier.
+1. Start orientdb running at localhost:2480
+2. Start elasticsearch running at localhost:9000
+3. Run Linkrygbee project which you have pasted earlier as usual.
 
 ##Dependency:
 For running this project we need 3 libraries to be installed.
