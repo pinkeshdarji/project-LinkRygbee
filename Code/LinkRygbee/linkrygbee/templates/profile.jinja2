@@ -1,0 +1,324 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LinkRygbee - profile page</title>
+
+    <link rel="shortcut icon" href="{{ request.static_url('linkrygbee:static/favicon.png') }}">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en"
+          rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="{{ request.static_url('linkrygbee:static/material.min.css') }}">
+    <link rel="stylesheet" href="{{ request.static_url('linkrygbee:static/styles.css') }}">
+    <script src="http://maps.googleapis.com/maps/api/js">
+    </script>
+
+    <script>
+
+    </script>
+    <style>
+        #view-source {
+            position: fixed;
+            display: block;
+            right: 0;
+            bottom: 0;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            z-index: 900;
+        }
+
+
+    </style>
+</head>
+<body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+
+
+        </div>
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            <h3>{{ user["firstName"]+ " " + user["lastName"] }} </h3>
+        </div>
+
+        <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+        </div>
+        <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
+            <a href="#overview" class="mdl-layout__tab is-active">Overview</a>
+            <a href="#summary" class="mdl-layout__tab">Summary</a>
+            <a href="#positions" class="mdl-layout__tab">Experience</a>
+            <a href="#users" class="mdl-layout__tab">Similar interest</a>
+
+
+            <a href="/seeyousoon">
+                <button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored mdl-shadow--4dp mdl-color--accent"
+                        id="add">
+                    <i class="material-icons">power_settings_new</i>
+                </button>
+            </a>
+        </div>
+    </header>
+    <main class="mdl-layout__content">
+        <div class="mdl-layout__tab-panel is-active" id="overview">
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <header class="section__play-btn mdl-cell mdl-cell--3-col-desktop mdl-cell--2-col-tablet mdl-cell--4-col-phone mdl-color--teal-100 mdl-color-text--white">
+                    <img src=" {{ user["pictureUrl"] }}" width="215" height="200"/>
+                </header>
+                <div class="mdl-card mdl-cell mdl-cell--9-col-desktop mdl-cell--6-col-tablet mdl-cell--4-col-phone">
+                    <div class="mdl-card__supporting-text">
+                        Headline
+                        <h4>{{ user["headline"] }}</h4>
+                    </div>
+                </div>
+
+            </section>
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                        <h4 class="mdl-cell mdl-cell--12-col">Personal Information</h4>
+                        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            First Name:
+                            <h5>{{ user["firstName"] }}</h5>
+
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            Last Name:
+                            <h5>{{ user["lastName"] }}</h5>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            E-Mail:
+                            <h5>{{ user["email"] }}</h5>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            Industry:
+                            <h5>{{ user["industry"] }}</h5>
+                        </div>
+                        <div class="mdl-cell mdl-cell--4-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            Location:
+                            <h5 id="address">{{ user["location"] }}</h5>
+                        </div>
+
+                    </div>
+
+                    <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            <div id="googleMap" style="height:380px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="mdl-layout__tab-panel" id="summary">
+
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">
+                        <h4 class="mdl-cell mdl-cell--12-col">Summary</h4>
+                        <div class="mdl-cell mdl-cell--12-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">
+                            {{ user["summary"] }}
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+        <div class="mdl-layout__tab-panel" id="positions">
+            <section class="section--center mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-cell mdl-cell--12-col">
+                    <div class="main-container">
+                        <section id="timeline" class="timeline-outer">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col s12 m12 l12">
+                                        <ul class="timeline">
+
+                                            {% for users_experience in users_experience %}
+                                                <li class="event" data-date="{{ users_experience['date'] }}">
+                                                    Title
+                                                    <h3>{{ users_experience['title'] }}</h3>
+                                                    Company
+                                                    <h3>{{ users_experience['company'] }}</h3>
+                                                    Location
+                                                    <h3>{{ users_experience['location'] }}</h3>
+                                                    Summary
+                                                    <h3>{{ users_experience['summary'] }}</h3>
+                                                </li>
+
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <br/>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="mdl-layout__tab-panel" id="users">
+
+            <section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp">
+                <div class="mdl-card mdl-cell mdl-cell--12-col">
+                    <div class="mdl-card__supporting-text">
+                        <h4>Search users of your interest</h4>
+                        <div class="mdl-layout-spacer"></div>
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--expandable">
+                            <label class="mdl-button mdl-js-button mdl-button--icon" for="search">
+                                <i class="material-icons">search</i>
+                            </label>
+                            <div class="mdl-textfield__expandable-holder">
+                                <input class="mdl-textfield__input" type="text" id="search">
+                                <label class="mdl-textfield__label" for="search">Enter your query...</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="notfound" class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing"><h6>Oops! We did
+                        not find any matching data.</h6></div>
+                    <div class="mdl-card__supporting-text mdl-grid mdl-grid--no-spacing" id="users_div">
+
+
+                    </div>
+
+                </div>
+
+
+            </section>
+        </div>
+
+    </main>
+</div>
+<script src="{{ request.static_url('linkrygbee:static/material.min.js') }}"></script>
+<script src="{{ request.static_url('linkrygbee:static/jquery-2.2.3.min.js') }}"></script>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var geocoder;
+        var map;
+        debugger;
+        var address = $('#address').text();
+        var a = address;
+
+        // Intially set 'not found' text to invisible on page load.
+        $("#notfound").hide();
+
+        //This event will get fire on every key up event in search box
+        $("#search").keyup(function () {
+            var searchString = $("#search").val();
+            // if searchString is not empty
+            if (searchString) {
+                //Pass search string to function to make ajax request.
+                getListofUser(searchString);
+            } else {
+                $("#notfound").hide();
+            }
+        });
+
+        // This function takes search string, make ajax request and returns result in json
+        function getListofUser(searchString) {
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:6543/search/" + searchString + "",
+                data: "",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (searchresult) {
+                    var result = searchresult["hits"]["hits"];
+                    if (result.length > 0) {
+
+                        // If result is returned then
+                        // 1. Remove previous result.
+                        $(".user_row").remove();
+                        // 2. Remove not found text.
+                        $("#notfound").hide();
+                        // 3. Bind new result.
+                        for (var i = 0; i < result.length; i++) {
+                            $("#users_div").append('<div class="user_row mdl-card__supporting-text mdl-grid mdl-grid--no-spacing">' +
+                                    '<div class="section__circle-container mdl-cell mdl-cell--2-col mdl-cell--1-col-phone">' +
+                                    '<img class="section__circle-container__circle mdl-color--primary" src=" ' + result[i]["_source"]["pictureUrl"] + ' " width="215" height="200" id="user_image"/>' +
+                                    '</div>' +
+                                    '<div class="section__text mdl-cell mdl-cell--10-col-desktop mdl-cell--6-col-tablet mdl-cell--3-col-phone">' +
+                                    '<h4>' + result[i]["_source"]["firstName"] + ' ' + result[i]["_source"]["lastName"] + '</h4>' +
+                                    '<h6>' + result[i]["_source"]["headline"] + '</h6>' +
+                                    '<h5>' + result[i]["_source"]["industry"] + '</h5>' +
+                                    '<a href="/profile/' + result[i]["_source"]["providerId"] + '">see more about ' + result[i]["_source"]["firstName"] + '</a>' +
+                                    ' </div>' +
+                                    '</div>');
+                        }
+
+
+                    }
+                    else {
+                        // If result is not returned then
+                        // 1. Remove previous result.
+                        $(".user_row").remove();
+                        // 2. Show not found text.
+                        $("#notfound").show();
+                    }
+
+                },
+                error: function (result) {
+                    alert("Error");
+                }
+            });
+        }
+
+
+        function initialize() {
+            geocoder = new google.maps.Geocoder();
+            var latlng = new google.maps.LatLng(-34.397, 150.644);
+            var myOptions = {
+                zoom: 8,
+                center: latlng,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+                },
+                navigationControl: true,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
+            map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+            if (geocoder) {
+                geocoder.geocode({
+                    'address': address
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                            map.setCenter(results[0].geometry.location);
+
+                            var infowindow = new google.maps.InfoWindow({
+                                content: '<b>' + address + '</b>',
+                                size: new google.maps.Size(250, 150)
+                            });
+
+                            var marker = new google.maps.Marker({
+                                position: results[0].geometry.location,
+                                map: map,
+                                title: address
+                            });
+                            google.maps.event.addListener(marker, 'click', function () {
+                                infowindow.open(map, marker);
+                            });
+
+                        } else {
+                            alert("No results found");
+                        }
+                    } else {
+                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                });
+            }
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    });
+</script>
+</body>
+</html>
