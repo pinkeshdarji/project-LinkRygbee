@@ -18,12 +18,13 @@ This project enables users to create accounts (and login) using their LinkedIn p
 3. Run Linkrygbee project which you have pasted earlier as usual.
 
 ##Dependency: 
-###For running this project we need 3 libraries to be installed.
+#### *For running this project you need 3 libraries to be installed.*
 1. Authomatic:- pip install authomatic (http://peterhudec.github.io/authomatic/)
 2. pyorient:- pip install pyorient
 (https://github.com/orientechnologies/pyorient)
 3. pyelasticsearch:- pip install pyelasticsearch
 (http://pyelasticsearch.readthedocs.io/en/latest/)
 :+1:
+
 
 
